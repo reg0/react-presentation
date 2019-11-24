@@ -1,10 +1,12 @@
 import React from 'react';
 import './foo.css';
+import { AuthContext } from '../auth-context';
 
 interface Props {
     changeHandler: (e: number) => void;
     multiplier: number;
     inputType: string;
+    auth: AuthContext;
 }
 
 class FooInput extends React.Component<Props> {
@@ -14,8 +16,11 @@ class FooInput extends React.Component<Props> {
                 <input 
                     type={this.props.inputType}
                     value={this.props.multiplier} 
-                    onChange={e => this.props.changeHandler(+e.target.value)} 
+                    onChange={e => this.props.changeHandler(+e.target.value)}
+                    disabled={!this.props.auth.canEdit}
                 />
+                { this.props.auth.username } can{ this.props.auth.canEdit ? '' : '\'t' } edit this value
+                <br />
             </React.Fragment>
         );
     }

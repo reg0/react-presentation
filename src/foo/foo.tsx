@@ -1,10 +1,12 @@
 import React from 'react';
 import './foo.css';
 import FooDisplay from './foo-display';
-import {FooTextInput as FooInput} from './foo-input';
+import {FooNumberInput as FooInput} from './foo-input';
+import { AuthContext } from '../auth-context';
 
 interface Props {
     textToShow?: string;
+    auth: AuthContext;
 }
 
 interface State {
@@ -29,7 +31,7 @@ class Foo extends React.Component<Props, State> {
     render() {
         return (
             <div>
-                <FooInput changeHandler={this.changeHandler} multiplier={this.state.multiplier} />
+                <FooInput changeHandler={this.changeHandler} multiplier={this.state.multiplier} auth={this.props.auth} />
                 <FooDisplay multiplier={this.state.multiplier} textToShow={this.props.textToShow || ''} />
             </div>
         );
