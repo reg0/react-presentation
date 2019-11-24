@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const Foo = (props: {n: number}) => <span>{"foo ".repeat(props.n)}</span>;
+
 function App() {
   return (
     <div className="App">
@@ -16,7 +18,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React <Foo n={3} />
         </a>
       </header>
     </div>
