@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-const Foo = (props: {n: number}) => <span>{"foo ".repeat(props.n)}</span>;
+import FooJS from './foo/foo';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <FooJS textToShow="foo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -18,7 +18,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React <Foo n={3} />
+          Learn React 
         </a>
       </header>
     </div>
