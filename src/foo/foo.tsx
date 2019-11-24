@@ -19,9 +19,12 @@ class Foo extends React.Component<Props, State> {
     }
 
     render() {
+        const onChange = (event: any) => {
+            this.setState({multiplier: event.target.value});
+        }
         return (
             <div>
-                <input type="number" value={this.state.multiplier}></input>
+                <input type="number" value={this.state.multiplier} onChange={onChange}></input>
                 {(this.props.textToShow || '').repeat(this.state.multiplier)}
             </div>
         );
