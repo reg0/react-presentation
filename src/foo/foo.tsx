@@ -1,7 +1,7 @@
 import React from 'react';
 import './foo.css';
 import FooDisplay from './foo-display';
-import FooInput from './foo-input';
+import {FooTextInput as FooInput} from './foo-input';
 
 interface Props {
     textToShow?: string;

@@ -4,6 +4,7 @@ import './foo.css';
 interface Props {
     changeHandler: (e: number) => void;
     multiplier: number;
+    inputType: string;
 }
 
 class FooInput extends React.Component<Props> {
@@ -11,7 +12,7 @@ class FooInput extends React.Component<Props> {
         return (
             <React.Fragment>
                 <input 
-                    type="number" 
+                    type={this.props.inputType}
                     value={this.props.multiplier} 
                     onChange={e => this.props.changeHandler(+e.target.value)} 
                 />
@@ -20,4 +21,9 @@ class FooInput extends React.Component<Props> {
     }
 }
 
-export default FooInput;
+const withInputType = (inputType: 'text' | 'number') => (WrappedComponent: any) => (props: any) => {
+    return <WrappedComponent {...props} inputType={inputType} />
+}
+
+export const FooTextInput = withInputType('text')(FooInput);
+export const FooNumberInput = withInputType('number')(FooInput);
