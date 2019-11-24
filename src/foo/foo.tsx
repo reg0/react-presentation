@@ -11,20 +11,24 @@ interface State {
 }
 
 class Foo extends React.Component<Props, State> {
+    private changeHandler: (e: any) => void;
+
     constructor(props: Props) {
         super(props);
         this.state = {
             multiplier: 1
         }
+        this.changeHandler = this.onChange.bind(this);
+    }
+    
+    onChange(event: any) {
+        this.setState({multiplier: event.target.value});
     }
 
     render() {
-        const onChange = (event: any) => {
-            this.setState({multiplier: event.target.value});
-        }
         return (
             <div>
-                <input type="number" value={this.state.multiplier} onChange={onChange}></input>
+                <input type="number" value={this.state.multiplier} onChange={this.changeHandler}></input>
                 {(this.props.textToShow || '').repeat(this.state.multiplier)}
             </div>
         );
