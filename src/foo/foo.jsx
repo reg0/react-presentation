@@ -24,4 +24,8 @@ Foo.propTypes = {
     textToShow: PropTypes.string.isRequired
 };
 
+Foo.defaultProps = {
+    textToShow: 'test'
+};
+
 export default Foo;
