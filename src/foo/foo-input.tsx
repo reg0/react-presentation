@@ -1,27 +1,45 @@
 import React from 'react';
 import './foo.css';
-import { AuthContext } from '../auth-context';
+import AuthCtx from '../auth-context';
 
 interface Props {
     changeHandler: (e: number) => void;
     multiplier: number;
     inputType: string;
-    auth: AuthContext;
 }
 
 class FooInput extends React.Component<Props> {
+    // render() {
+    //     const authContext = React.useContext(AuthCtx);
+    //     return (
+    //         <React.Fragment>
+    //             <input 
+    //                 type={this.props.inputType}
+    //                 value={this.props.multiplier} 
+    //                 onChange={e => this.props.changeHandler(+e.target.value)}
+    //                 disabled={!authContext.canEdit}
+    //             />
+    //             { authContext.username } can{ authContext.canEdit ? '' : '\'t' } edit this value
+    //             <br />
+    //         </React.Fragment>
+    //     );
+    // }
     render() {
         return (
-            <React.Fragment>
-                <input 
-                    type={this.props.inputType}
-                    value={this.props.multiplier} 
-                    onChange={e => this.props.changeHandler(+e.target.value)}
-                    disabled={!this.props.auth.canEdit}
-                />
-                { this.props.auth.username } can{ this.props.auth.canEdit ? '' : '\'t' } edit this value
-                <br />
-            </React.Fragment>
+            <AuthCtx.Consumer>
+                { authContext => (
+                    <React.Fragment>
+                        <input 
+                            type={this.props.inputType}
+                            value={this.props.multiplier} 
+                            onChange={e => this.props.changeHandler(+e.target.value)}
+                            disabled={!authContext.canEdit}
+                        />
+                        { authContext.username } can{ authContext.canEdit ? '' : '\'t' } edit this value
+                        <br />
+                    </React.Fragment>
+                )}
+            </AuthCtx.Consumer>
         );
     }
 }

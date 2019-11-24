@@ -6,7 +6,6 @@ import { AuthContext } from '../auth-context';
 
 interface Props {
     textToShow?: string;
-    auth: AuthContext;
 }
 
 interface State {
@@ -31,7 +30,7 @@ class Foo extends React.Component<Props, State> {
     render() {
         return (
             <div>
-                <FooInput changeHandler={this.changeHandler} multiplier={this.state.multiplier} auth={this.props.auth} />
+                <FooInput changeHandler={this.changeHandler} multiplier={this.state.multiplier} />
                 <FooDisplay multiplier={this.state.multiplier} textToShow={this.props.textToShow || ''} />
             </div>
         );

@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import AuthCtx, { defaultValue } from './auth-context';
 
-const auth = {
-    username: 'kamil',
-    canEdit: true,
-}
+const appWithAuth = (
+    <AuthCtx.Provider value={defaultValue}>
+        <App/>
+    </AuthCtx.Provider>
+)
 
-ReactDOM.render(<App auth={auth} />, document.getElementById('root'));
+ReactDOM.render(appWithAuth, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

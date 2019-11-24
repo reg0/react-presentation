@@ -4,12 +4,12 @@ import './App.css';
 import FooTs from './foo/foo';
 import { AuthContext } from './auth-context';
 
-function App(props: {auth: AuthContext}) {
+function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <FooTs textToShow="foo " auth={props.auth} />
+        <FooTs textToShow="foo " />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
