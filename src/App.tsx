@@ -2,6 +2,9 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import FooTs from './foo/foo';
+import FooJs from './foo/foo-js';
+// import FooJsNoClasses from './foo/foo-js-no-classes';
+import FooFn from './foo/foo-fn';
 
 function App() {
   return (
@@ -9,6 +12,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <FooTs textToShow="foo " />
+        <FooJs textToShow="foo " />
+        {/* <FooJsNoClasses textToShow="foo " /> */}
+        <FooFn textToShow="foo " />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
