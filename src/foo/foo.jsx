@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './foo.css';
 
 class Foo extends React.Component {
@@ -13,10 +14,14 @@ class Foo extends React.Component {
         return (
             <div>
                 <input type="number" value={this.state.multiplier}></input>
-                {this.props.textToShow.repeat(this.state.multiplier)}
+                {(this.props.textToShow || '').repeat(this.state.multiplier)}
             </div>
         );
     }
 }
+
+Foo.propTypes = {
+    textToShow: PropTypes.string.isRequired
+};
 
 export default Foo;
