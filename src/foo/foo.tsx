@@ -1,6 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './foo.css';
+import FooDisplay from './foo-display';
+import FooInput from './foo-input';
 
 interface Props {
     textToShow?: string;
@@ -11,7 +12,7 @@ interface State {
 }
 
 class Foo extends React.Component<Props, State> {
-    private changeHandler: (e: any) => void;
+    private changeHandler: (newMultiplier: number) => void;
 
     constructor(props: Props) {
         super(props);
@@ -21,15 +22,15 @@ class Foo extends React.Component<Props, State> {
         this.changeHandler = this.onChange.bind(this);
     }
     
-    onChange(event: any) {
-        this.setState({multiplier: event.target.value});
+    onChange(newMultiplier: number) {
+        this.setState({multiplier: newMultiplier});
     }
 
     render() {
         return (
             <div>
-                <input type="number" value={this.state.multiplier} onChange={this.changeHandler}></input>
-                {(this.props.textToShow || '').repeat(this.state.multiplier)}
+                <FooInput changeHandler={this.changeHandler} multiplier={this.state.multiplier} />
+                <FooDisplay multiplier={this.state.multiplier} textToShow={this.props.textToShow || ''} />
             </div>
         );
     }
