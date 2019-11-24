@@ -2,8 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './foo.css';
 
-class Foo extends React.Component {
-    constructor(props) {
+interface Props {
+    textToShow?: string;
+}
+
+interface State {
+    multiplier: number;
+}
+
+class Foo extends React.Component<Props, State> {
+    constructor(props: Props) {
         super(props);
         this.state = {
             multiplier: 1
@@ -19,13 +27,5 @@ class Foo extends React.Component {
         );
     }
 }
-
-Foo.propTypes = {
-    textToShow: PropTypes.string.isRequired
-};
-
-Foo.defaultProps = {
-    textToShow: 'test'
-};
 
 export default Foo;

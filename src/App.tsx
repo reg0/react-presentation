@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import FooJS from './foo/foo';
+import FooTs from './foo/foo';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <FooJS  />
+        <FooTs textToShow="foo " />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
